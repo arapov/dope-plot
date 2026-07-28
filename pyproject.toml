@@ -20,9 +20,9 @@ classifiers = [
     "Topic :: Multimedia :: Graphics",
 ]
 dependencies = [
-    "pandas (>=3.0.3,<4.0.0)",
-    "matplotlib (>=3.10.0,<4.0.0)",
-    "numpy (>=2.2.1,<3.0.0)",
+    "pandas (>=3.0.5,<4.0.0)",
+    "matplotlib (>=3.11.1,<4.0.0)",
+    "numpy (>=2.5.1,<3.0.0)",
     # matplotlib's image backend (pulled transitively); floored to the patched
     # release that fixes the 2026 Pillow CVEs (GHSA/CVE image-parsing issues).
     "pillow (>=12.3.0)",
@@ -56,8 +56,8 @@ include = [
 ]
 
 [tool.poetry.group.dev.dependencies]
-ruff = "^0.15.15"
-pytest = "^9.0.3"
+ruff = "^0.16.0"
+pytest = "^9.1.1"
 
 [tool.ruff]
 line-length = 120
