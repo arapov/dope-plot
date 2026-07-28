@@ -1,0 +1,24 @@
+version: 2
+updates:
+  # Python dependencies declared in pyproject.toml (incl. the mcp extra).
+  # Security fixes are opened automatically regardless of schedule; this adds
+  # proactive weekly version bumps, grouped into a single PR to avoid churn.
+  - package-ecosystem: "pip"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    open-pull-requests-limit: 5
+    groups:
+      python-dependencies:
+        patterns:
+          - "*"
+
+  # GitHub Actions used by the CI workflow (checkout, setup-python, ...).
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    groups:
+      github-actions:
+        patterns:
+          - "*"
