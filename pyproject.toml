@@ -30,9 +30,11 @@ dependencies = [
 
 [project.optional-dependencies]
 # Model Context Protocol server, for using dope-plot from Claude / other AIs.
-# Floored to 1.28.1: fixes CVE-2026-59950 and pulls patched starlette,
-# python-multipart, pydantic-settings and cryptography transitively.
-mcp = ["mcp>=1.28.1"]
+# 1.28.1 fixes CVE-2026-59950 (and pulls patched starlette, python-multipart,
+# pydantic-settings, cryptography). Capped <2.0.0: mcp 2.0 removed the vendored
+# mcp.server.fastmcp, which mcp_server.py builds on — a 2.0 migration is a
+# separate, deliberate change, not a Dependabot floor bump.
+mcp = ["mcp>=1.28.1,<2.0.0"]
 
 [project.scripts]
 dope-plot = "dope_plot.cli:main"
