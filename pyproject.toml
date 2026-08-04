@@ -34,7 +34,7 @@ dependencies = [
 # pydantic-settings, cryptography). Capped <2.0.0: mcp 2.0 removed the vendored
 # mcp.server.fastmcp, which mcp_server.py builds on — a 2.0 migration is a
 # separate, deliberate change, not a Dependabot floor bump.
-mcp = ["mcp>=1.28.1,<2.0.0"]
+mcp = ["mcp>=2.0.0,<3.0.0"]
 
 [project.scripts]
 dope-plot = "dope_plot.cli:main"
@@ -58,7 +58,7 @@ include = [
 ]
 
 [tool.poetry.group.dev.dependencies]
-ruff = "^0.16.0"
+ruff = "^0.16.1"
 pytest = "^9.1.1"
 
 [tool.ruff]
