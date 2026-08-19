@@ -12,14 +12,15 @@ and point your client's MCP config at that command (stdio transport).
 """
 
 try:
-    from mcp.server.fastmcp import FastMCP, Image
+    # mcp >= 2.0: MCPServer is the high-level API (successor of 1.x FastMCP).
+    from mcp.server.mcpserver import Image, MCPServer
 except ModuleNotFoundError:
     # The optional 'mcp' extra isn't installed; main() explains how to get it.
-    FastMCP = None
+    MCPServer = None
 else:
     from .service import comparison_png, radar_png, scatter_png
 
-    mcp = FastMCP("dope-plot")
+    mcp = MCPServer("dope-plot")
 
     @mcp.tool()
     def scatter_chart(csv: str) -> Image:
@@ -75,7 +76,7 @@ else:
 
 def main() -> None:
     """Console-script entry point: run the MCP server over stdio."""
-    if FastMCP is None:
+    if MCPServer is None:
         raise SystemExit(
             "dope-plot's MCP server needs the optional 'mcp' dependency.\n"
             "Install it with:  pip install 'dope-plot[mcp]'"
