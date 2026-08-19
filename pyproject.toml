@@ -32,7 +32,9 @@ dependencies = [
 # Model Context Protocol server, for using dope-plot from Claude / other AIs.
 # mcp_server.py uses the 2.x high-level API (mcp.server.mcpserver.MCPServer,
 # the successor of 1.x FastMCP); capped <3.0.0 against the next breaking major.
-mcp = ["mcp>=2.0.0,<3.0.0"]
+# cryptography comes transitively via mcp's auth stack; floored to the release
+# that fixes GHSA-g6cj-pr64-35w5 (PKCS#7 Bleichenbacher oracle).
+mcp = ["mcp>=2.0.0,<3.0.0", "cryptography>=50.0.0"]
 
 [project.scripts]
 dope-plot = "dope_plot.cli:main"
